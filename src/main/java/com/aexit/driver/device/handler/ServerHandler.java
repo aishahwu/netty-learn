@@ -15,12 +15,12 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> { // (1)
     public static ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
     /**
-     * 当连接建立的时候被调用
+     * 函数当连接建立的时候被调用
      * @param ctx
      * @throws Exception
      */
     @Override
-    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {  // (2)
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         Channel incoming = ctx.channel();
         for (Channel channel : channels) {
             channel.writeAndFlush("[SERVER] - " + incoming.remoteAddress() + " 加入\n");
